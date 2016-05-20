@@ -1,8 +1,11 @@
-﻿// Learn more about F# at http://fsharp.net
-// See the 'F# Tutorial' project for more help.
+﻿module Program
 
-[<EntryPoint>]
-let main argv = 
-    printfn "%A" argv
-    0 // return an integer exit code
+open System
+open Parser
 
+let words = getWords "1 1 +"
+let dictionary = ["+"; "-"]
+
+let parsedCode = remcode words dictionary 0 []
+
+printf("test")

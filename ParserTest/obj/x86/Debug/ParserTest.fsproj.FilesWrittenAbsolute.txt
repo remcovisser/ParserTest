@@ -1,0 +1,5 @@
+/Users/remcovisser/Code/school/hr/ParserTest/ParserTest/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.fs
+/Users/remcovisser/Code/school/hr/ParserTest/ParserTest/bin/Debug/ParserTest.exe.mdb
+/Users/remcovisser/Code/school/hr/ParserTest/ParserTest/bin/Debug/ParserTest.exe
+/Users/remcovisser/Code/school/hr/ParserTest/ParserTest/obj/x86/Debug/ParserTest.exe
+/Users/remcovisser/Code/school/hr/ParserTest/ParserTest/obj/x86/Debug/ParserTest.exe.mdb

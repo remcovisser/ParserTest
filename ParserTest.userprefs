@@ -1,1 +1,15 @@
-﻿<Properties StartupItem="ParserTest/ParserTest.fsproj" />
+﻿<Properties StartupItem="ParserTest/ParserTest.fsproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ParserTest/Parser.fs">
+    <Files>
+      <File FileName="ParserTest/Program.fs" Line="9" Column="5" />
+      <File FileName="ParserTest/Parser.fs" Line="19" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/remcovisser/Code/school/hr/ParserTest/ParserTest/Program.fs" line="11" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
