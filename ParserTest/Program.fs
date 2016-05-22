@@ -3,11 +3,10 @@
 open System
 open Parser
 open Dictionary
+open System.IO
 
-
-let programInput =  "8 5 + print"
-
-
+// Read program from file, just because
+let programInput = File.ReadAllText("SomeProgram.remcode");
 
 
 let program = getWords programInput
