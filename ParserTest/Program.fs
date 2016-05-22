@@ -2,10 +2,10 @@
 
 open System
 open Parser
+open Dictionary
 
-let words = getWords "1 1 +"
-let dictionary = ["+"; "-"]
+let program = getWords "2 1 +"
 
-let parsedCode = remcode words dictionary 0 []
+let programOutput = remcode program dictionary 0 []
 
-printf("test")
+printf "%s" programOutput
