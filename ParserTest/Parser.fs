@@ -16,11 +16,9 @@ let rec remcode (words: List<string>) (dictionary: List<string>) (next:int) (sta
                     let stack = action word stack
                     remcode words dictionary (next+1) stack
                 | false, word ->
-                    match word with
-                    | "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" -> 
-                        remcode words dictionary (next+1) (System.Single.Parse(word) :: stack)
+                    match System.Single.TryParse(word) with
+                    | (true, number) ->
+                        remcode words dictionary (next+1) (number :: stack)
                     | _ ->
                         printfn "Unknown character found: %s" word
                         remcode words dictionary (next+1) stack
- 
-
