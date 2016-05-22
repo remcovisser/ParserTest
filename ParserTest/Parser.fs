@@ -7,9 +7,10 @@ open Dictionary
 let getWords (text: string) =
     (text.Split ' ') |> Array.toList
 
+// Parse code and execute it
 let rec remcode (words: List<string>) (dictionary: List<string>) (next:int) (stack: List<float32>) = 
      match words.Length = next with 
-        | true -> "Program has been executed"
+        | true -> "The program has been executed"
         | false ->
             match inDictionary words.[next] dictionary, words.[next] with
                 | true, word ->  

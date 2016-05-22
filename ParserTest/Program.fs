@@ -4,8 +4,12 @@ open System
 open Parser
 open Dictionary
 
-let program = getWords "2 1 + 9 7 - 5 15 *"
 
+let programInput =  "8 5 + print"
+
+
+
+
+let program = getWords programInput
 let programOutput = remcode program dictionary 0 []
-
 printf "%s" programOutput
