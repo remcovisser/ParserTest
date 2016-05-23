@@ -5,7 +5,9 @@ open Dictionary
 
 // Return a string with all the words of the programm, words are characters sepparted by a space
 let getWords (text: string) =
-    (text.Split ' ') |> Array.toList
+    let rawWords = (text.Split (' ','\n')) |> Array.toList
+    let words = rawWords |> List.filter(fun words -> words = "" |> not)
+    words
 
 // Parse code and execute it
 let rec remcode (words: List<string>) (dictionary: List<string>) (next:int) (stack: List<float32>) = 

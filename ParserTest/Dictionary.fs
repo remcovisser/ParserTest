@@ -25,14 +25,16 @@ let action (word: string) (stack: List<float32>) =
         let stack = remove stack.Length stack
         tail.Head + head::stack
     | "-", head::tail -> 
-        printfn "%f" (tail.Head - head)
-        tail.Head :: tail
+        let stack = remove stack.Length stack
+        let stack = remove stack.Length stack
+        tail.Head - head::stack
     | "*", head::tail -> 
-        printfn "%f" (tail.Head * head)
-        tail.Head :: tail
+        let stack = remove stack.Length stack
+        let stack = remove stack.Length stack
+        tail.Head * head::stack
     | "print", head::tail ->
         printfn "%f" head
-        head::tail
+        tail
     | _ , head::tail -> 
         printfn "Unknow character"
         tail.Head :: tail
