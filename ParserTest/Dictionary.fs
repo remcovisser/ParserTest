@@ -1,7 +1,7 @@
 ﻿module Dictionary
 open System
 
-let dictionary = ["+"; "-"; "*"; "print"]
+let dictionary = ["+"; "-"; "*"; "sqrt"; "sqr"; "print"]
 
 // Check if word is in the dictionary, returns true of false
 let rec inDictionary value dictionary =
@@ -17,21 +17,34 @@ let rec remove i l =
     | i, x::xs -> x::remove (i - 1) xs
     | i, [] -> failwith "index out of range"
 
+// Remove first element of the list
+let removeFirst list = 
+    match list with
+    | head::tail -> tail
+    | _ -> failwith "index out of range"
+   
+
 // Execute action based on current word, returns updated stack
 let action (word: string) (stack: List<float32>) =
     match word, stack with
     | "+", head::tail -> 
-        let stack = remove stack.Length stack
-        let stack = remove stack.Length stack
-        tail.Head + head::stack
+        let stack = removeFirst stack
+        let stack = removeFirst stack
+        stack @ [tail.Head + head]
     | "-", head::tail -> 
-        let stack = remove stack.Length stack
-        let stack = remove stack.Length stack
-        tail.Head - head::stack
+        let stack = removeFirst stack
+        let stack = removeFirst stack
+        stack @ [tail.Head - head]
     | "*", head::tail -> 
-        let stack = remove stack.Length stack
-        let stack = remove stack.Length stack
-        tail.Head * head::stack
+        let stack = removeFirst stack
+        let stack = removeFirst stack
+        stack @ [tail.Head * head]
+    | "sqrt", head::tail -> 
+        let stack = removeFirst stack
+        stack @ [sqrt head]
+    | "sqr", head::tail ->
+        let stack = removeFirst stack
+        stack @ [head * head]
     | "print", head::tail ->
         printfn "%f" head
         tail
