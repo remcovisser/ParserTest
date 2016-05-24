@@ -15,7 +15,7 @@ let action (word: string) (stack: Map<int, float32>) =
         stack <- stack.Remove 1
         stack
     | "print" ->
-        let key = (stack |> Seq.head).Key
-        printfn "%f" (stack.Item key)
+        printfn "%f" (stack.Item ((stack |> Seq.head).Key))
+        let mutable stack = stack.Remove ((stack |> Seq.head).Key)
         stack
     | _ -> failwith "Unknown character"

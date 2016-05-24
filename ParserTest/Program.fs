@@ -12,4 +12,5 @@ let programInput = File.ReadAllText("SomeProgram.remcode");
 let program = getWords programInput
 let programOutput = remcode program dictionary 0 Map.empty
 
+printf "test"
 //printf "%s" programOutput
