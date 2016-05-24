@@ -10,18 +10,25 @@ let getWords (text: string) =
     words
 
 // Parse code and execute it
-let rec remcode (words: List<string>) (dictionary: List<string>) (next:int) (stack: List<float32>) = 
+let rec remcode (words: List<string>) (dictionary: Map<string,string>) (next:int) (stack: Map<int, float32>) = 
      match words.Length = next with 
-        | true -> "The program has been executed"
+        | true -> stack //"The program has been executed"
         | false ->
-            match inDictionary words.[next] dictionary, words.[next] with
+            match dictionary |> Map.containsKey words.[next], words.[next] with
+                | true, "var" ->
+                    let dicionary = dictionary.Add (words.[next+1], words.[next+2])
+                    remcode words dictionary (next+2) stack
                 | true, word ->  
                     let stack = action word stack
                     remcode words dictionary (next+1) stack
-                | false, word ->
+                | false, word -> 
                     match System.Single.TryParse(word) with
                     | (true, number) ->
-                        remcode words dictionary (next+1) (number :: stack)
+                        let position = 
+                            match stack.ContainsKey 0 with
+                            | true -> 1
+                            | false -> 0
+                        remcode words dictionary (next+1) (stack.Add (position, number))
                     | _ ->
                         printfn "Unknown character found: %s" word
                         remcode words dictionary (next+1) stack

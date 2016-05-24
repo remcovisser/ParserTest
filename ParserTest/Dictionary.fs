@@ -1,56 +1,17 @@
 ﻿module Dictionary
 open System
 
-let dictionary = ["+"; "-"; "*"; "sqrt"; "sqr"; "print"]
 
-// Check if word is in the dictionary, returns true of false
-let rec inDictionary value dictionary =
-    match dictionary with
-    | head::tail when head = value -> true
-    | head::tail -> inDictionary value tail
-    | [] -> false
-
-// Remove element from list specified by index
-let rec remove i l =
-    match i, l with
-    | 1, x::xs -> xs
-    | i, x::xs -> x::remove (i - 1) xs
-    | i, [] -> failwith "index out of range"
-
-// Remove first element of the list
-let removeFirst list = 
-    match list with
-    | head::tail -> tail
-    | _ -> failwith "index out of range"
+let dictionary:Map<string,string> = [("+", ""); ("-", "")] |> Map.ofList
    
 
 // Execute action based on current word, returns updated stack
-let action (word: string) (stack: List<float32>) =
-    match word, stack with
-    | "+", head::tail -> 
-        let stack = removeFirst stack
-        let stack = removeFirst stack
-        stack @ [tail.Head + head]
-    | "-", head::tail -> 
-        let stack = removeFirst stack
-        let stack = removeFirst stack
-        stack @ [tail.Head - head]
-    | "*", head::tail -> 
-        let stack = removeFirst stack
-        let stack = removeFirst stack
-        stack @ [tail.Head * head]
-    | "sqrt", head::tail -> 
-        let stack = removeFirst stack
-        stack @ [sqrt head]
-    | "sqr", head::tail ->
-        let stack = removeFirst stack
-        stack @ [head * head]
-    | "print", head::tail ->
-        printfn "%f" head
-        tail
-    | _ , head::tail -> 
-        printfn "Unknow character"
-        tail.Head :: tail
-    | _, [] ->
-        printfn "Stack is empty"
-        []
+let action (word: string) (stack: Map<int, float32>) =
+    match word with
+    | "+" -> 
+        let key = stack.Count
+        let mutable stack = stack.Add ((key+2), (stack.Item 0 + stack.Item 1))
+        stack <- stack.Remove 0
+        stack <- stack.Remove 1
+        stack
+    | _ -> failwith "Not plus"
