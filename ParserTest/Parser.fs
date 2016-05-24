@@ -15,6 +15,9 @@ let rec remcode (words: List<string>) (dictionary: Map<string,string>) (next:int
         | true -> stack //"The program has been executed"
         | false ->
             match dictionary |> Map.containsKey words.[next], words.[next] with
+                | true, "var" ->
+                    let dictionary = dictionary.Add (words.[next+1], "")
+                    remcode words dictionary (next+2) stack
                 | true, word ->  
                     let stack = action word stack
                     remcode words dictionary (next+1) stack
