@@ -1,2 +1,6 @@
 ﻿var x
-x 1
+10 x
+20 30 + print
+var y
+20 y
+x y +
