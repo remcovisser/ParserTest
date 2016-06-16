@@ -24,8 +24,9 @@ let rec remcode (words: List<string>) (dictionary: Map<string, int>) (next:int) 
                     remcode words dictionary' (next+2) stack
                 | false, "store" ->
                     let value = stack.Item 0
-                    let stack' = stack.Remove 0
                     let key = stack.Count
+                    let stack' = stack.Remove 0
+    
                     let stack' = stack'.Add(key, value)
                     let dictionary' = dictionary.Add (words.[next-1], key) 
                     remcode words dictionary' (next+1) stack'
@@ -39,10 +40,22 @@ let rec remcode (words: List<string>) (dictionary: Map<string, int>) (next:int) 
                     | false -> printfn "%f"  (stack |> Seq.last).Value
                     remcode words dictionary (next+1) stack
                 | false, "+" -> 
+                    let word1 = words.[next-1]
+                    let word2 = words.[next-2]
                     let key = (stack |> Seq.last).Key
-                    let stack' = stack.Add ((key+1), (stack.Item 0 + stack.Item 1))
-                    let stack' = stack'.Remove 0
-                    let stack' = stack'.Remove 1
+                    let stack' = match System.Single.TryParse(word1), System.Single.TryParse(word2) with
+                    | (false, value1), (false, value2) ->
+                        let dictionaryKey1 = dictionary.Item word1
+                        let itemFromStack1 = stack.Item (dictionaryKey1-1)
+                        let dictionaryKey2 = dictionary.Item word2
+                        let itemFromStack2 = stack.Item (dictionaryKey2-1)
+                        let stack' = stack.Add ((key+1), (itemFromStack1 + itemFromStack2))
+                        stack'
+                    | (true, value1), (true, value2) ->
+                        let stack' = stack.Add ((key+2), (value1 + value2))
+                        let stack' = stack'.Remove key
+                        let stack' = stack'.Remove (key+1)
+                        stack'
                     remcode words dictionary (next+1) stack'
                 | false, word -> 
                     match System.Single.TryParse(word) with
