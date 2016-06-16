@@ -1,0 +1,7 @@
+C:\Users\Remco\Documents\GitHub\ParserTest\ParserTest\bin\Debug\SomeProgram.remcode
+C:\Users\Remco\Documents\GitHub\ParserTest\ParserTest\bin\Debug\ParserTest.exe
+C:\Users\Remco\Documents\GitHub\ParserTest\ParserTest\bin\Debug\ParserTest.pdb
+C:\Users\Remco\Documents\GitHub\ParserTest\ParserTest\bin\Debug\FSharp.Core.dll
+C:\Users\Remco\Documents\GitHub\ParserTest\ParserTest\bin\Debug\FSharp.Core.xml
+C:\Users\Remco\Documents\GitHub\ParserTest\ParserTest\obj\x86\Debug\ParserTest.exe
+C:\Users\Remco\Documents\GitHub\ParserTest\ParserTest\obj\x86\Debug\ParserTest.pdb
