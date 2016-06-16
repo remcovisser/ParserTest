@@ -6,6 +6,10 @@ var b
 20 b store
 b print
 
-20 10 + print
+var c
+30 c store
+c print
 
-a b + print
+40 50 + print
+
+a c + print
