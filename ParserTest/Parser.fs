@@ -26,7 +26,6 @@ let rec remcode (words: List<string>) (dictionary: Map<string, int>) (next:int) 
                     let value = stack.Item 0
                     let key = stack.Count
                     let stack' = stack.Remove 0
-    
                     let stack' = stack'.Add(key, value)
                     let dictionary' = dictionary.Add (words.[next-1], key) 
                     remcode words dictionary' (next+1) stack'
